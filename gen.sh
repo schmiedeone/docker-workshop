@@ -1,0 +1,1 @@
+docker run -v $1:/app -w /app mcr.microsoft.com/dotnet/core/sdk:3.1 bash -c "dotnet new webapi -o $2 && chown -R 1000:1000 $2"

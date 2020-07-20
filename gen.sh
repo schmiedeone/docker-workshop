@@ -18,7 +18,11 @@ WORKDIR /app
 COPY --from=build /dist ./
 
 EXPOSE 80
-EXPOSE 5000
-EXPOSE 5001
 
 CMD [ \"dotnet\", \"$2.dll\" ]" >$1/$2/Dockerfile
+
+PORT=8080
+
+docker build -t $2 $1/$2/
+echo "Running dockererized app on port $PORT"
+docker run -p $PORT:80 --name=$2 $2:latest

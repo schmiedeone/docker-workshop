@@ -21,6 +21,9 @@ EXPOSE 80
 
 CMD [ \"dotnet\", \"$2.dll\" ]" >$1/$2/Dockerfile
 
+cp .dockerignore-template $1/$2/.dockerignore
+cp .gitignore-template $1/$2/.gitignore
+
 PORT=8080
 
 docker build -t $2 $1/$2/
